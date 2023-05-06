@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
-    use HasFactory;
+    protected $table = 'levels'; //Abram: Table's name of the class 06/05/2023
 }
