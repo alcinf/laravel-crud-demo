@@ -12,7 +12,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        echo 'Students list';
+        return view('students.index');
     }
 
     /**
