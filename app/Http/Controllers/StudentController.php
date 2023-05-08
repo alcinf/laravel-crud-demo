@@ -29,7 +29,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([ //Abram: Form fields are validated 08/05/2023
+             'enrollment' => 'required|unique:students|max:10'
+            ,'name' => 'required|max:255'
+            ,'birthdate' => 'required|date'
+            ,'phone' => 'required|'
+            ,'email' => 'nullable|email'
+            ,'level' => 'required'
+        ]);
     }
 
     /**
