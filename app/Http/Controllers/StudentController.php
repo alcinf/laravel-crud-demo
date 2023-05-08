@@ -37,6 +37,17 @@ class StudentController extends Controller
             ,'email' => 'nullable|email'
             ,'level' => 'required'
         ]);
+
+        $student = new Student(); //Abram: The date are mapping to save in database 08/05/2023
+        $student->enrollment = $request->input('enrollment');
+        $student->name = $request->input('name');
+        $student->birthdate = $request->input('birthdate');
+        $student->phone = $request->input('phone');
+        $student->email = $request->input('email');
+        $student->level_id = $request->input('level');
+        $student->save(); //Abram: Data is saved 08/05/2023
+
+        return view('students.message', ['msg'=>'Record saved']); //Abram: Message of success to final user 08/05/2023
     }
 
     /**
