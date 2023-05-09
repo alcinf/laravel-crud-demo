@@ -69,9 +69,27 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([ //Abram: Form fields are validated 09/05/2023
+             'enrollment' => 'required|max:10|unique:students,enrollment,'.$id
+            ,'name' => 'required|max:255'
+            ,'birthdate' => 'required|date'
+            ,'phone' => 'required|'
+            ,'email' => 'nullable|email'
+            ,'level' => 'required'
+        ]);
+
+        $student = Student::find($id); //The record is located and recovered 09/05/2023
+        $student->enrollment = $request->input('enrollment'); //Abram: The date are mapping to save in database 09/05/2023
+        $student->name = $request->input('name');
+        $student->birthdate = $request->input('birthdate');
+        $student->phone = $request->input('phone');
+        $student->email = $request->input('email');
+        $student->level_id = $request->input('level');
+        $student->save(); //Abram: Data is saved 09/05/2023
+
+        return view('students.message', ['msg'=>'Record updated']); //Abram: Message of success to final user 09/05/2023
     }
 
     /**
