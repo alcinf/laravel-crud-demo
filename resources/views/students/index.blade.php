@@ -45,7 +45,7 @@
                     <td>{{ $student->phone }}</td>
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->level->name }}</td>
-                    <td></td>
+                    <td><a href="{{ url('students/'.$student->id.'/edit') }}" class="btn btn-warning btn-sm">Editar</a></td>
                     <td></td>
                 </tr>
                 @endforeach

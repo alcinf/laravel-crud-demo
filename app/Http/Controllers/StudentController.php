@@ -61,9 +61,9 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        return view('students.edit', ['student'=>Student::find($id), 'levels' => Level::all()]);
     }
 
     /**
