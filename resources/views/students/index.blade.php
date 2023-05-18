@@ -10,15 +10,6 @@
 
         <a href="{{ url('students/create') }}" class="btn btn-primary btn-sm">New record</a>
 
-        <!--
-        'enrollment' => 'required|unique:students|max:10'
-        ,'name' => 'required|max:255'
-        ,'birthdate' => 'required|date'
-        ,'phone' => 'required|'
-        ,'email' => 'nullable|email'
-        ,'level' => 'required'
-        -->
-
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -46,7 +37,13 @@
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->level->name }}</td>
                     <td><a href="{{ url('students/'.$student->id.'/edit') }}" class="btn btn-warning btn-sm">Editar</a></td>
-                    <td></td>
+                    <td>
+                        <form action="{{ url('students/'.$student->id) }}" method="post">
+                            @method("DELETE")
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

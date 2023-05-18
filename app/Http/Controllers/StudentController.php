@@ -95,8 +95,10 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+        $student = Student::find($id); //The record is located and recovered 09/05/2023
+        $student->delete(); //Abram: Data is deleted 09/05/2023
+        return redirect('students'); //Abram: Redirect to students list 09/05/2023
     }
 }
